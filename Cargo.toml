@@ -7,7 +7,6 @@ repository = "https://github.com/samuelsramko/rust-web3-closest-provider"
 
 description = "A library for dynamically selecting the fastest Web3 provider based on response time."
 license = "MIT"
-license-file = "LICENSE"
 
 [dependencies]
 reqwest = {version="0.11.24", features=["json"]}
