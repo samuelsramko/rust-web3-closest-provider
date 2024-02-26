@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["web3_closest_provider"];

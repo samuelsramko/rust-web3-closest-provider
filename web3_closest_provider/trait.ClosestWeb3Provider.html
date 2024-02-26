@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Defines methods for interacting with a Web3 provider balancer. This trait enables you to:"><title>ClosestWeb3Provider in web3_closest_provider - Rust</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../static.files/rustdoc-ac92e1bbe349e143.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="web3_closest_provider" data-themes="" data-resource-suffix="" data-rustdoc-version="1.76.0 (07dca489a 2024-02-04)" data-channel="1.76.0" data-search-js="search-2b6ce74ff89ae146.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../static.files/storage-f2adc0d6ca4d09fb.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-305769736d49e732.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-feafe1bb7466e4bd.css"></noscript><link rel="alternate icon" type="image/png" href="../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc trait"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="mobile-topbar"><button class="sidebar-menu-toggle">&#9776;</button></nav><nav class="sidebar"><div class="sidebar-crate"><h2><a href="../web3_closest_provider/index.html">web3_closest_provider</a><span class="version">1.0.0</span></h2></div><h2 class="location"><a href="#">ClosestWeb3Provider</a></h2><div class="sidebar-elems"><section><h3><a href="#required-methods">Required Methods</a></h3><ul class="block"><li><a href="#tymethod.destroy">destroy</a></li><li><a href="#tymethod.get_fastest_provider">get_fastest_provider</a></li><li><a href="#tymethod.init">init</a></li><li><a href="#tymethod.is_ready">is_ready</a></li><li><a href="#tymethod.wait_until_ready">wait_until_ready</a></li></ul><h3><a href="#object-safety">Object Safety</a></h3><h3><a href="#implementors">Implementors</a></h3></section><h2><a href="index.html">In crate web3_closest_provider</a></h2></div></nav><div class="sidebar-resizer"></div>
+    <main><div class="width-limiter"><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../web3_closest_provider/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="main-heading"><h1>Trait <a href="index.html">web3_closest_provider</a>::<wbr><a class="trait" href="#">ClosestWeb3Provider</a><button id="copy-path" title="Copy item path to clipboard"><img src="../static.files/clipboard-7571035ce49a181d.svg" width="19" height="18" alt="Copy item path"></button></h1><span class="out-of-band"><a class="src" href="../src/web3_closest_provider/lib.rs.html#46-186">source</a> · <button id="toggle-all-docs" title="collapse all docs">[<span>&#x2212;</span>]</button></span></div><pre class="rust item-decl"><code>pub trait ClosestWeb3Provider {
+    // Required methods
+    fn <a href="#tymethod.init" class="fn">init</a>(urls: <a class="struct" href="https://doc.rust-lang.org/1.76.0/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.76.0/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;, checking_interval: <a class="struct" href="https://doc.rust-lang.org/1.76.0/core/time/struct.Duration.html" title="struct core::time::Duration">Duration</a>) -&gt; Self;
+<span class="item-spacer"></span>    fn <a href="#tymethod.is_ready" class="fn">is_ready</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/1.76.0/std/primitive.bool.html">bool</a>;
+<span class="item-spacer"></span>    fn <a href="#tymethod.destroy" class="fn">destroy</a>(&amp;self);
+<span class="item-spacer"></span>    fn <a href="#tymethod.get_fastest_provider" class="fn">get_fastest_provider</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/1.76.0/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>;
+<span class="item-spacer"></span>    fn <a href="#tymethod.wait_until_ready" class="fn">wait_until_ready</a>(&amp;self) -&gt; impl <a class="trait" href="https://doc.rust-lang.org/1.76.0/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="primitive" href="https://doc.rust-lang.org/1.76.0/std/primitive.unit.html">()</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/1.76.0/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a>;
+}</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Defines methods for interacting with a Web3 provider balancer.
+This trait enables you to:</p>
+<ul>
+<li>Initialize a balancer with a list of Web3 provider URLs.</li>
+<li>Check if the balancer is ready to provide the fastest provider.</li>
+<li>Stop the balancer and clear its data.</li>
+<li>Get the URL of the provider with the fastest response time.</li>
+<li>Wait until the balancer is ready to provide the fastest provider.</li>
+</ul>
+<p>This trait is useful for applications that need to dynamically select the fastest Web3 provider based on response time, ensuring optimal performance for your Web3 operations.</p>
+</div></details><h2 id="required-methods" class="section-header">Required Methods<a href="#required-methods" class="anchor">§</a></h2><div class="methods"><details class="toggle method-toggle" open><summary><section id="tymethod.init" class="method"><a class="src rightside" href="../src/web3_closest_provider/lib.rs.html#71">source</a><h4 class="code-header">fn <a href="#tymethod.init" class="fn">init</a>(urls: <a class="struct" href="https://doc.rust-lang.org/1.76.0/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="https://doc.rust-lang.org/1.76.0/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;, checking_interval: <a class="struct" href="https://doc.rust-lang.org/1.76.0/core/time/struct.Duration.html" title="struct core::time::Duration">Duration</a>) -&gt; Self</h4></section></summary><div class="docblock"><p>Initializes the provider balancer with a list of URLs.</p>
+<h5 id="example"><a href="#example">Example</a></h5>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>web3_closest_provider::{ClosestWeb3Provider, ClosestWeb3RpcProviderSelector};
+<span class="kw">use </span>std::time::Duration;
+
+<span class="attr">#[tokio::main]
+</span><span class="kw">async fn </span>main() {
+    <span class="kw">let </span>providers = <span class="macro">vec!</span>[
+        <span class="string">"https://mainnet.infura.io/v3/your_api_key"</span>.to_string(),
+        <span class="string">"https://rpc.ankr.com/eth"</span>.to_string(),
+        <span class="string">"https://api.mycryptoapi.com/v1/eth"</span>.to_string(),
+    ];
+
+    <span class="kw">let </span>balancer = ClosestWeb3RpcProviderSelector::init(providers.clone(), Duration::from_secs(<span class="number">10</span>));
+}</code></pre></div>
+<h5 id="arguments"><a href="#arguments">Arguments</a></h5>
+<ul>
+<li><code>urls</code> - A vector of URLs for the Web3 providers.</li>
+<li><code>checking_interval</code> - The interval at which the balancer checks the response times of the providers.</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.is_ready" class="method"><a class="src rightside" href="../src/web3_closest_provider/lib.rs.html#103">source</a><h4 class="code-header">fn <a href="#tymethod.is_ready" class="fn">is_ready</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/1.76.0/std/primitive.bool.html">bool</a></h4></section></summary><div class="docblock"><p>Checks if the balancer is ready to provide the fastest provider.</p>
+<h5 id="example-1"><a href="#example-1">Example</a></h5>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>web3_closest_provider::{ClosestWeb3Provider, ClosestWeb3RpcProviderSelector};
+<span class="kw">use </span>std::time::Duration;
+
+<span class="attr">#[tokio::main]
+</span><span class="kw">async fn </span>main() {
+    <span class="kw">let </span>providers = <span class="macro">vec!</span>[
+        <span class="string">"https://mainnet.infura.io/v3/your_api_key"</span>.to_string(),
+        <span class="string">"https://rpc.ankr.com/eth"</span>.to_string(),
+        <span class="string">"https://api.mycryptoapi.com/v1/eth"</span>.to_string(),
+    ];
+
+    <span class="kw">let </span>balancer = ClosestWeb3RpcProviderSelector::init(providers.clone(), Duration::from_secs(<span class="number">10</span>));
+
+    <span class="kw">if </span>balancer.is_ready() {
+        <span class="macro">println!</span>(<span class="string">"Balancer is ready to use!"</span>);
+    } <span class="kw">else </span>{
+        balancer.wait_until_ready().<span class="kw">await</span>;    
+        <span class="macro">println!</span>(<span class="string">"Balancer is ready to use!"</span>);
+    }
+}</code></pre></div>
+<h5 id="returns"><a href="#returns">Returns</a></h5>
+<ul>
+<li><code>true</code> if the balancer is ready; <code>false</code> otherwise.</li>
+</ul>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.destroy" class="method"><a class="src rightside" href="../src/web3_closest_provider/lib.rs.html#126">source</a><h4 class="code-header">fn <a href="#tymethod.destroy" class="fn">destroy</a>(&amp;self)</h4></section></summary><div class="docblock"><p>Stops the balancer and clears its data.</p>
+<h5 id="example-2"><a href="#example-2">Example</a></h5>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>web3_closest_provider::{ClosestWeb3Provider, ClosestWeb3RpcProviderSelector};
+<span class="kw">use </span>std::time::Duration;
+
+<span class="attr">#[tokio::main]
+</span><span class="kw">async fn </span>main() {
+    <span class="kw">let </span>providers = <span class="macro">vec!</span>[
+        <span class="string">"https://mainnet.infura.io/v3/your_api_key"</span>.to_string(),
+        <span class="string">"https://rpc.ankr.com/eth"</span>.to_string(),
+        <span class="string">"https://api.mycryptoapi.com/v1/eth"</span>.to_string(),
+    ];
+
+    <span class="kw">let </span>balancer = ClosestWeb3RpcProviderSelector::init(providers.clone(), Duration::from_secs(<span class="number">10</span>));
+
+    balancer.destroy(); <span class="comment">// **This step is essential!**
+</span>}</code></pre></div>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.get_fastest_provider" class="method"><a class="src rightside" href="../src/web3_closest_provider/lib.rs.html#161">source</a><h4 class="code-header">fn <a href="#tymethod.get_fastest_provider" class="fn">get_fastest_provider</a>(&amp;self) -&gt; <a class="struct" href="https://doc.rust-lang.org/1.76.0/alloc/string/struct.String.html" title="struct alloc::string::String">String</a></h4></section></summary><div class="docblock"><p>Returns the URL of the provider with the fastest response time.</p>
+<h5 id="example-3"><a href="#example-3">Example</a></h5>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>web3_closest_provider::{ClosestWeb3Provider, ClosestWeb3RpcProviderSelector};
+<span class="kw">use </span>std::time::Duration;
+
+<span class="attr">#[tokio::main]
+</span><span class="kw">async fn </span>main() {
+    <span class="kw">let </span>providers = <span class="macro">vec!</span>[
+        <span class="string">"https://mainnet.infura.io/v3/your_api_key"</span>.to_string(),
+        <span class="string">"https://rpc.ankr.com/eth"</span>.to_string(),
+        <span class="string">"https://api.mycryptoapi.com/v1/eth"</span>.to_string(),
+    ];
+
+    <span class="kw">let </span>balancer = ClosestWeb3RpcProviderSelector::init(providers.clone(), Duration::from_secs(<span class="number">10</span>));
+
+    balancer.wait_until_ready().<span class="kw">await</span>;   
+    <span class="kw">let </span>fastest_provider = balancer.get_fastest_provider();
+    <span class="macro">println!</span>(<span class="string">"Fastest provider: {}"</span>, fastest_provider);
+}
+
+<span class="comment">// ... use the fastest provider for your Web3 operations ...</span></code></pre></div>
+<h5 id="returns-1"><a href="#returns-1">Returns</a></h5>
+<p>The URL of the provider with the fastest response time.</p>
+<h5 id="panics"><a href="#panics">Panics</a></h5>
+<p>This function will panic if the hashmap containing response times is empty.</p>
+</div></details><details class="toggle method-toggle" open><summary><section id="tymethod.wait_until_ready" class="method"><a class="src rightside" href="../src/web3_closest_provider/lib.rs.html#185">source</a><h4 class="code-header">fn <a href="#tymethod.wait_until_ready" class="fn">wait_until_ready</a>(&amp;self) -&gt; impl <a class="trait" href="https://doc.rust-lang.org/1.76.0/core/future/future/trait.Future.html" title="trait core::future::future::Future">Future</a>&lt;Output = <a class="primitive" href="https://doc.rust-lang.org/1.76.0/std/primitive.unit.html">()</a>&gt; + <a class="trait" href="https://doc.rust-lang.org/1.76.0/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a></h4></section></summary><div class="docblock"><p>Waits until the balancer is ready to provide the fastest provider.</p>
+<h5 id="example-4"><a href="#example-4">Example</a></h5>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>web3_closest_provider::{ClosestWeb3Provider, ClosestWeb3RpcProviderSelector};
+<span class="kw">use </span>std::time::Duration;
+
+<span class="attr">#[tokio::main]
+</span><span class="kw">async fn </span>main() {
+    <span class="kw">let </span>providers = <span class="macro">vec!</span>[
+        <span class="string">"https://mainnet.infura.io/v3/your_api_key"</span>.to_string(),
+        <span class="string">"https://rpc.ankr.com/eth"</span>.to_string(),
+        <span class="string">"https://api.mycryptoapi.com/v1/eth"</span>.to_string(),
+    ];
+
+    <span class="kw">let </span>balancer = ClosestWeb3RpcProviderSelector::init(providers.clone(), Duration::from_secs(<span class="number">10</span>));
+
+    balancer.wait_until_ready().<span class="kw">await</span>;
+    <span class="macro">println!</span>(<span class="string">"Balancer is ready to use!"</span>);
+}</code></pre></div>
+</div></details></div><h2 id="object-safety" class="section-header">Object Safety<a href="#object-safety" class="anchor">§</a></h2><div class="object-safety-info">This trait is <b>not</b> <a href="https://doc.rust-lang.org/1.76.0/reference/items/traits.html#object-safety">object safe</a>.</div><h2 id="implementors" class="section-header">Implementors<a href="#implementors" class="anchor">§</a></h2><div id="implementors-list"><section id="impl-ClosestWeb3Provider-for-ClosestWeb3RpcProviderSelector" class="impl"><a class="src rightside" href="../src/web3_closest_provider/lib.rs.html#204-259">source</a><a href="#impl-ClosestWeb3Provider-for-ClosestWeb3RpcProviderSelector" class="anchor">§</a><h3 class="code-header">impl <a class="trait" href="trait.ClosestWeb3Provider.html" title="trait web3_closest_provider::ClosestWeb3Provider">ClosestWeb3Provider</a> for <a class="struct" href="struct.ClosestWeb3RpcProviderSelector.html" title="struct web3_closest_provider::ClosestWeb3RpcProviderSelector">ClosestWeb3RpcProviderSelector</a></h3></section></div><script src="../trait.impl/web3_closest_provider/trait.ClosestWeb3Provider.js" async></script></section></div></main></body></html>

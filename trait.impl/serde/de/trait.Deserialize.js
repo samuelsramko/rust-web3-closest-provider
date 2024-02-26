@@ -1,0 +1,3 @@
+(function() {var implementors = {
+"web3_closest_provider":[["impl&lt;'de&gt; <a class=\"trait\" href=\"https://docs.rs/serde/1.0.197/serde/de/trait.Deserialize.html\" title=\"trait serde::de::Deserialize\">Deserialize</a>&lt;'de&gt; for <a class=\"struct\" href=\"web3_closest_provider/struct.JsonRpcResponse.html\" title=\"struct web3_closest_provider::JsonRpcResponse\">JsonRpcResponse</a>"]]
+};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
