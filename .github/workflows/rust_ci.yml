@@ -1,0 +1,41 @@
+name: Rust CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        override: true
+
+    - name: Install cargo-make
+      run: cargo install cargo-make
+
+    - name: Build
+      run: cargo make build
+
+    - name: Test
+      run: cargo make test
+
+    - name: Generate documentation
+      run: cargo doc --no-deps --document-private-items
+
+    # - name: Publish documentation as GitHub page
+    #   uses: peaceiris/actions-gh-pages@v3
+    #   with:
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}
+    #     publish_dir: ./target/doc
+
+    - name: Publish to crates.io
+      run: cargo publish
