@@ -1,5 +1,5 @@
 # Get the closest Web3 RPC provider in Rust
-
+[![Rust CI](https://github.com/samuelsramko/rust-web3-closest-provider/actions/workflows/rust_ci.yml/badge.svg)](https://github.com/samuelsramko/rust-web3-closest-provider/actions/workflows/rust_ci.yml)
 ## Introduction
 
 Tired of manually switching between Web3 RPC providers to find the fastest one? This library takes the hassle out of it by automatically load balancing between your chosen providers based on their response times. Simply provide a list of potential providers, and the library will dynamically select the fastest option for your local setup, ensuring optimal performance for your Web3 applications.
