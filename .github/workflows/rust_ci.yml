@@ -10,34 +10,48 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Rust
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        override: true
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
 
-    - name: Install cargo-make
-      run: cargo install cargo-make
+      - name: Install cargo-make
+        run: cargo install cargo-make
 
-    - name: Build
-      run: cargo make build
+      # Cache the runner details before the build and test steps
+      - name: Cache runner details before build and test
+        uses: actions/cache@v2
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-rust-${{ hashFiles('Cargo.lock') }}
 
-    - name: Test
-      run: cargo make test
+      - name: Build
+        run: cargo make build
 
-    - name: Generate documentation
-      run: cargo doc --no-deps --document-private-items
+      - name: Test
+        run: cargo make test
 
-    # - name: Publish documentation as GitHub page
-    #   uses: peaceiris/actions-gh-pages@v3
-    #   with:
-    #     github_token: ${{ secrets.GITHUB_TOKEN }}
-    #     publish_dir: ./target/doc
+      - name: Generate documentation
+        run: cargo doc --no-deps --document-private-items
 
-    - name: Publish to crates.io
-      run: cargo publish
-      env:
-        CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+      # Cache the runner details after the build and test steps
+      - name: Cache runner details after build and test
+        uses: actions/cache@v2
+        with:
+          path: ~/.cargo
+          key: ${{ runner.os }}-rust-${{ hashFiles('Cargo.lock') }}
+
+      - name: Publish documentation as GitHub page
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/doc
+
+      - name: Publish to crates.io
+        run: cargo publish
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}

@@ -17,7 +17,10 @@ Tired of manually switching between Web3 RPC providers to find the fastest one? 
 Using Cargo:
 
 1. Add `web3_closest_provider = "1.0.0"` to your `Cargo.toml` dependencies.
-2. Run `cargo install web3_closest_provider`.
+2. or 
+```bash 
+cargo add web3_closest_provider
+```
 
 ## Usage
 
